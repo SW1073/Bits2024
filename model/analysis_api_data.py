@@ -39,6 +39,19 @@ def load_csv(data_path: str) -> pl.DataFrame:
 
     return df
 
+def match_with_timestamp(df: pl.DataFrame, dfv2: pl.DataFrame) -> pl.DataFrame:
+    # dfv2 format is 2023-03-13T00:00:00.000
+    # df format is 09/02/2024
+    # column of timestamp in dfv2 is called "data"
+    # column of timestamp in df is called "timestamp"
+    # both columns are string type
+
+    # convert dfv2 to df format
+    
+    return df
+
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str, default='data.csv')
