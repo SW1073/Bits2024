@@ -55,13 +55,20 @@ class DBManager:
             df = pd.read_csv(csv_path, encoding = 'latin1')
 
         for row in df.itertuples():
-            if (self._execute_query("SELECT COUNT(*) FROM center c where c.id == ?", (row.institut,)) == 0):
-                db._execute_query("INSERT INTO center(id, municipality) VALUES(?, ?)", (row.institut, row.municipi))
+            n = self._execute_query("SELECT COUNT(*) FROM class c where c.centre == ? AND c.curs == ?", (row.institut, row.curs));
+            if (n[0][0] == 0):
+                self._execute_query("INSERT INTO class(curs, centre, municipi) VALUES(?, ?, ?)", (row.curs, row.institut, row.municipi))
+            class_id = self._execute_query("SELECT c.id FROM class c where c.centre == ? AND c.curs == ?", (row.institut, row.curs))[0][0];
+
+            print(f"KK = {class_id} {row.timestamp} {row.institut} {row.curs}")
+            self._execute_query("""
+INSERT INTO daily_log(event_date, fk_id_class, num_alumnes, mal_de_panxa, calfreds, mal_de_cap, mal_de_coll, mocs, nas_tapat, esternut, vomits, altres, be, regular, malament, tos) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+""", (row.timestamp, class_id, row.num_alumnes, row.mal_de_panxa, row.calfreds, row.mal_de_cap, row.mal_de_coll, row.mocs, row.nas_tapat, row.esternut, row.vomits, row.altres, row.be, row.regular, row.malament, row.tos))
 
 
     def get_alumnes(self, uf_id):
         # return self._execute_query(f"SELECT * FROM alumne a WHERE a.uf_id == {uf_id}")
-        return self._execute_query(f"SELECT * FROM center")
+        return self._execute_query(f"SELECT * FROM daily_log")
 
     def insert_daily_log(self, alumni_id, log: FormModel):
         class_id = self._execute_query("SELECT fk_id_class FROM alumni a WHERE a.id == ?", (alumni_id,))

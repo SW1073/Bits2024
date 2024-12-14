@@ -7,7 +7,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 db = DBManager('prova.db', 'schema2.sql')
-db.populate_db_with_csv('Data/dades.csv')
+# db.populate_db_with_csv('Data/dades.csv')
 
 @app.get("/uf/{id_uf}")
 def get_uf(id_uf: int):

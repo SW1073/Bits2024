@@ -1,18 +1,14 @@
-CREATE TABLE IF NOT EXISTS center (
-    id TEXT PRIMARY KEY,
-    municipality TEXT
-);
-
 CREATE TABLE IF NOT EXISTS class (
-    id TEXT PRIMARY KEY,
-    fk_id_center TEXT,
-    FOREIGN KEY (fk_id_center) REFERENCES center (id)
+    id INTEGER PRIMARY KEY,
+    centre TEXT,
+    curs TEXT,
+    municipi TEXT
 );
 
 CREATE TABLE IF NOT EXISTS alumni (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    fk_id_class TEXT,
+    fk_id_class INTEGER,
     FOREIGN KEY (fk_id_class) REFERENCES class (id)
 );
 
