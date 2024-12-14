@@ -1,0 +1,59 @@
+-- CREATE TABLE IF NOT EXISTS uf (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     username TEXT UNIQUE NOT NULL,
+--     password TEXT NOT NULL,
+--     email TEXT NOT NULL
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS aula (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     nom TEXT NOT NULL
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS alumne (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     uf_id INTEGER PRIMARY,
+--     aula_id INTEGER PRIMARY,
+--     nom TEXT NOT NULL,
+--     FOREIGN KEY (uf_id) REFERENCES uf (id),
+--     FOREIGN KEY (aula_id) REFERENCES aula (id)
+-- );
+--
+-- CREATE TABLE IF NOT EXISTS formulari (
+--     alumne_id INTEGER PRIMARY,
+--     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     aula_id INTEGER NOT NULL,
+--     resultat INTEGER NOT NULL,
+--     FOREIGN KEY (alumne_id) REFERENCES alumne (id)
+-- );
+
+CREATE TABLE IF NOT EXISTS uf (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS aula (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS alumne (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    uf_id INTEGER,
+    aula_id INTEGER,
+    nom TEXT NOT NULL,
+    FOREIGN KEY (uf_id) REFERENCES uf (id),
+    FOREIGN KEY (aula_id) REFERENCES aula (id)
+);
+
+CREATE TABLE IF NOT EXISTS formulari (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- added primary key
+    alumne_id INTEGER,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    aula_id INTEGER NOT NULL,
+    resultat INTEGER NOT NULL,
+    FOREIGN KEY (alumne_id) REFERENCES alumne (id)
+);
+
