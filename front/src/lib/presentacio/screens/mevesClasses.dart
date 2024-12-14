@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:src/presentacio/controladorPresentacio.dart';
+import 'package:src/presentacio/widgets/menuEsquerre.dart';
 
 class MevesClasses extends StatefulWidget {
-  final ControladorPresentacion controladorPresentacion;
+  final ControladorPresentacio controladorPresentacio;
 
-  const MevesClasses({Key? key, required this.controladorPresentacion})
+  const MevesClasses({Key? key, required this.controladorPresentacio})
       : super(key: key);
 
   @override
-  State<MevesClasses> createState() => _MevesClasses(controladorPresentacion);
+  State<MevesClasses> createState() => _MevesClasses(controladorPresentacio);
 }
 
 class _MevesClasses extends State<MevesClasses> {
-  late ControladorPresentacion _controladorPresentacion;
+  late ControladorPresentacio _controladorPresentacio;
 
-  _MevesClasses(ControladorPresentacion controladorPresentacion) {
-    _controladorPresentacion = controladorPresentacion;
+  _MevesClasses(ControladorPresentacio controladorPresentacio) {
+    _controladorPresentacio = controladorPresentacio;
   }
 
   @override
   void initState() {
     super.initState();
-  }
-
-  void _a() {
-    print('a');
   }
 
   // blau fosc -> Color.fromRGBO(8, 72, 135, 1)
@@ -35,18 +32,46 @@ class _MevesClasses extends State<MevesClasses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 20),
+          child: const Text(
+            'Nom App',
+            style: TextStyle(
+              color: Color.fromRGBO(8, 72, 135, 1),
+              fontWeight: FontWeight.bold,
+              fontSize: 35,
+            ),
+          ),
+        ),
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Title widget
-            Text(
-              'Les meves classes',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(8, 72, 135, 1),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 20,
+              ),
+              child: Text(
+                'Les meves classes',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(8, 72, 135, 1),
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -56,10 +81,14 @@ class _MevesClasses extends State<MevesClasses> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
+                      _controladorPresentacio.mostraAula(context);
                       print("Tapped on class $index");
                     },
                     child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 40,
+                      ),
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(219, 212, 211, 1),
@@ -69,7 +98,7 @@ class _MevesClasses extends State<MevesClasses> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Nom de classe',
+                            'Nom: Nom complet de nen',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -78,10 +107,34 @@ class _MevesClasses extends State<MevesClasses> {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            'Nom de nen',
+                            'Nom escola: Escola A',
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black54,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Provincia escola: Barcelona',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Nivell: Primaria',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Linea: 3A',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
                             ),
                           ),
                         ],
@@ -93,6 +146,9 @@ class _MevesClasses extends State<MevesClasses> {
             ),
           ],
         ),
+      ),
+      drawer: Drawer(
+        child: MenuEsquerre(),
       ),
     );
   }

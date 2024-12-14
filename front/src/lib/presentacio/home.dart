@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:src/presentacio/controladorPresentacio.dart';
 
 class Home extends StatefulWidget {
-  final ControladorPresentacion controladorPresentacion;
-  const Home({Key? key, required this.controladorPresentacion});
+  final ControladorPresentacio controladorPresentacio;
+  const Home({Key? key, required this.controladorPresentacio});
 
   @override
-  State<Home> createState() => _Home(controladorPresentacion);
+  State<Home> createState() => _Home(controladorPresentacio);
 }
 
 class _Home extends State<Home> {
-  late ControladorPresentacion _controladorPresentacion;
+  late ControladorPresentacio _controladorPresentacio;
 
-  _Home(ControladorPresentacion controladorPresentacion) {
-    _controladorPresentacion = controladorPresentacion;
+  _Home(ControladorPresentacio controladorPresentacio) {
+    _controladorPresentacio = controladorPresentacio;
   }
 
   @override

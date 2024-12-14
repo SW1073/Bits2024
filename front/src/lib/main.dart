@@ -6,25 +6,25 @@ import 'package:src/presentacio/widgets/menuEsquerre.dart';
 import 'package:src/presentacio/widgets/menuInferior.dart';
 
 void main() {
-  final controladorPresentacion = ControladorPresentacion();
+  final controladorPresentacio = ControladorPresentacio();
 
-  runApp(MyApp(controladorPresentacion: controladorPresentacion));
+  runApp(MyApp(controladorPresentacio: controladorPresentacio));
 }
 
 class MyApp extends StatefulWidget {
-  final ControladorPresentacion controladorPresentacion;
+  final ControladorPresentacio controladorPresentacio;
 
-  MyApp({Key? key, required this.controladorPresentacion}) : super(key: key);
+  MyApp({Key? key, required this.controladorPresentacio}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState(controladorPresentacion);
+  _MyAppState createState() => _MyAppState(controladorPresentacio);
 }
 
 class _MyAppState extends State<MyApp> {
-  late ControladorPresentacion _controladorPresentacion;
+  late ControladorPresentacio _controladorPresentacio;
 
-  _MyAppState(ControladorPresentacion controladorPresentacion) {
-    _controladorPresentacion = controladorPresentacion;
+  _MyAppState(ControladorPresentacio controladorPresentacio) {
+    _controladorPresentacio = controladorPresentacio;
   }
 
   @override
@@ -38,30 +38,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Nom App',
-            style: TextStyle(
-              color: Color.fromRGBO(8, 72, 135, 1),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          leading: Builder(
-            builder: (context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              );
-            },
-          ),
-        ),
-        body: MevesClasses(controladorPresentacion: _controladorPresentacion),
-        drawer: Drawer(
-          child: MenuEsquerre(),
-        ),
-        bottomNavigationBar: MenuInferior(),
+        body: MevesClasses(controladorPresentacio: _controladorPresentacio),
       ),
     );
   }
