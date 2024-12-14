@@ -5,10 +5,27 @@ class MenuEsquerre extends StatelessWidget {
     return ListView(
       children: [
         const DrawerHeader(
-          child: Text('Menú'),
+          child: Center(
+            child: Text(
+              'Menú',
+              style: TextStyle(
+                color: Color.fromRGBO(8, 72, 135, 1),
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
         ),
         ListTile(
-          title: const Text('Opció 1'),
+          title: Center(
+            child: const Text(
+              'Afegir aules',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
           onTap: () {
             Navigator.pop(context);
           },

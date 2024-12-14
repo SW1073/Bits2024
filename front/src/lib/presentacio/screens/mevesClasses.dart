@@ -47,7 +47,10 @@ class _MevesClasses extends State<MevesClasses> {
         leading: Builder(
           builder: (context) {
             return IconButton(
-              icon: const Icon(Icons.menu),
+              icon: const Icon(
+                Icons.menu,
+                color: Color.fromRGBO(8, 72, 135, 1),
+              ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               },
@@ -148,6 +151,7 @@ class _MevesClasses extends State<MevesClasses> {
         ),
       ),
       drawer: Drawer(
+        backgroundColor: Color.fromRGBO(219, 212, 211, 1),
         child: MenuEsquerre(),
       ),
     );

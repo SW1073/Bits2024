@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class MenuInferior extends StatefulWidget {
   const MenuInferior({super.key});
@@ -39,20 +39,20 @@ class _MenuInferior extends State<MenuInferior> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: 'Gràfics',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.business),
-          label: 'Business',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.school),
-          label: 'School',
+          label: 'Fórum',
         ),
       ],
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
+      backgroundColor: Color.fromRGBO(44, 246, 179, 1),
+      selectedItemColor: Colors.white,
       onTap: _onItemTapped,
     ));
   }
-}
+}*/

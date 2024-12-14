@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:src/presentacio/controladorPresentacio.dart';
-import 'package:src/presentacio/widgets/menuInferior.dart';
+import 'package:src/presentacio/screens/afegirSimptomes.dart';
+import 'package:src/presentacio/screens/forum.dart';
+import 'package:src/presentacio/screens/grafics.dart';
 
 class Aula extends StatefulWidget {
   final ControladorPresentacio controladorPresentacio;
@@ -14,9 +16,11 @@ class Aula extends StatefulWidget {
 
 class _Aula extends State<Aula> {
   late ControladorPresentacio _controladorPresentacio;
+  late int index_marcat;
 
   _Aula(ControladorPresentacio controladorPresentacio) {
     _controladorPresentacio = controladorPresentacio;
+    index_marcat = 0;
   }
 
   @override
@@ -31,6 +35,15 @@ class _Aula extends State<Aula> {
 
   void anarAMevesAules() {
     return _controladorPresentacio.mostraMevesAules(context);
+  }
+
+  Widget retornaPantalla() {
+    if (index_marcat == 0) {
+      return Grafics();
+    } else if (index_marcat == 1) {
+      return AfegirSimptomes();
+    }
+    return Forum();
   }
 
   @override
@@ -56,7 +69,7 @@ class _Aula extends State<Aula> {
                     ),
                   ),
                   SizedBox(
-                    width: 20,
+                    width: 30,
                   ),
                   Text(
                     'Aula',
@@ -70,42 +83,42 @@ class _Aula extends State<Aula> {
               ),
             ),
             const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 40,
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(219, 212, 211, 1),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Gràfic',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromRGBO(8, 72, 135, 1),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+            retornaPantalla(),
           ],
         ),
       ),
       bottomNavigationBar: MenuInferior(),
+    );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      index_marcat = index;
+    });
+  }
+
+  Widget MenuInferior() {
+    return Container(
+      child: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Gràfics',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Add',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Fórum',
+          ),
+        ],
+        currentIndex: index_marcat,
+        backgroundColor: Color.fromRGBO(73, 160, 120, 1),
+        selectedItemColor: Colors.white,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
