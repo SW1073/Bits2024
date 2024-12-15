@@ -1,25 +1,19 @@
-from typing import Union
-from db import DBManager
-from form_model import FormModel
-
 from fastapi import FastAPI
+
+from form_model import FormModel
+from controller import Controller
 
 
 app = FastAPI()
-db = DBManager('prova.db', 'schema2.sql')
-# db.populate_db_with_csv('Data/dades.csv')
+ctrl = Controller()
 
-@app.get("/uf/{id_uf}")
-def get_uf(id_uf: int):
-    return {"item_id": id_uf}
+# Retornem l'id de l'alumne
+@app.get("/alumne/{nom_alumne}")
+def get_alumne(nom_alumne: str):
+    return {"id": 0}
 
-@app.get("/alumne/{id_alumne}")
-def get_alumne(id_alumne: int):
-    return {"result": "OK"}
-
-@app.get("/logform")
-def post_form():
-
-    # f = FormModel()
-    # db.insert_daily_log(alumni_id, f)
-    return {"hola": db.get_alumnes(0)}
+# Actualitzem la instància de daily log
+@app.post("/logform/{id_alumne}")
+def post_form(id_alumne: int, data):
+    f = FormModel(data)
+    ctrl.insert_daily_log(id_alumne, f)

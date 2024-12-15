@@ -13,3 +13,17 @@ class FormModel(BaseModel):
     regular: int
     malament: int
     tos: int
+
+    def __init__(self, f):
+        self.calfreds = f["calfreds"]
+        self.mal_de_cap
+        self.mal_de_coll
+        self.mocs
+        self.nas_tapat
+        self.esternut
+        self.vomits
+        self.altres
+        self.be
+        self.regular
+        self.malament
+        self.tos
