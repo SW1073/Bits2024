@@ -391,6 +391,7 @@ def main():
             print(f"\nGenerated Sequence for Classe {classe}:")
             # round the generated sequence to integers and discard negative values by assigning 0
             print(generated_sequence.round().clip(min=0))
+            return (generated_sequence.round().clip(min=0))
         except ValueError as e:
             print(f"Error generating sequence for class {classe}: {e}")
         
