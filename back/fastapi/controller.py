@@ -13,16 +13,17 @@ class Controller:
         self.db = DBManager('prova.db', 'schema2.sql', 'Data/dades.csv')
 
     def extract_tensors(self, text):
-        # Regular expression to match the Generated Sequence tensor
-        generated_pattern = r"Generated Sequence for .*?:\s+tensor\((.*?)\)"
+        # Regular expression to match the center name and the Generated Sequence tensor
+        generated_pattern = r"Generated Sequence for Classe \(\('(.*?)',\),\):\s+tensor\((.*?)\)"
 
-        # Search for the tensor in the Generated Sequence section
+        # Search for the center name and tensor in the Generated Sequence section
         match = re.search(generated_pattern, text, re.DOTALL)
         if not match:
-            raise ValueError("Generated Sequence tensor not found in the text.")
+            raise ValueError("Generated Sequence tensor or center name not found in the text.")
 
-        # Extract the tensor content and clean it up
-        tensor_content = match.group(1).strip()
+        # Extract the center name and tensor content
+        center_name = match.group(1).strip()
+        tensor_content = match.group(2).strip()
 
         # Convert the tensor content into a 2D list of floats
         rows = tensor_content.split("],")
@@ -31,8 +32,9 @@ class Controller:
             # Remove brackets and split by commas
             clean_row = row.replace("[", "").replace("]", "").strip()
             array.append([float(x) for x in clean_row.split(",")])
+
         # Convert the list into a NumPy array
-        return np.array(array)
+        return center_name, np.array(array)
 
     # Convert the list into a N
     def get_alumnes(self, uf_id):
@@ -50,6 +52,7 @@ class Controller:
         p = subprocess.Popen( ['python3', 'analyze_results.py', '--data_path', 'result.csv', '--use_last_14_columns'], cwd="../../model/", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         p.wait()
         stdout, stderr = p.communicate()
+        print(stdout)
         result = self.extract_tensors(stdout)
         print(result)
 
@@ -59,6 +62,6 @@ class Controller:
     def get_prediction(self, class_id):
         ret = self.model_predict(class_id)
         result = []
-        for r in ret:
-            result.append(FormModel(r))
-        return result
+        for r in ret[1]:
+            result.append({"escola": ret[0], "prediccio": FormModel(r)})
+        return result[-2:]

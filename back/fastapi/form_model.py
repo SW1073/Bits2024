@@ -18,6 +18,7 @@ class FormModel:
     tos: int
 
     def __init__(self, f):
+        print(f)
         self.num_alumnes = f[0]
         self.calfreds = f[1]
         self.mal_de_panxa = f[2]
