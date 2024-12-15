@@ -8,6 +8,11 @@ class Grafics extends StatefulWidget {
 }
 
 class _Grafics extends State<Grafics> {
+  List<String> nomGrafiques = [
+    '../assets/Escola_Merce_Rodoreda_regular.png',
+    '../assets/Escola_Merce_Rodoreda_malament.png'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -26,7 +31,7 @@ class _Grafics extends State<Grafics> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 4,
+              itemCount: 2,
               itemBuilder: (context, index) {
                 return Container(
                   margin: const EdgeInsets.symmetric(
@@ -41,15 +46,12 @@ class _Grafics extends State<Grafics> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        'Gràfic',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(8, 72, 135, 1),
-                        ),
+                      Image.asset(
+                        nomGrafiques[index],
+                        width: 450,
+                        height: 400,
+                        fit: BoxFit.cover,
                       ),
-                      const SizedBox(height: 10),
                     ],
                   ),
                 );

@@ -166,7 +166,9 @@ class _MevesClasses extends State<MevesClasses> {
       ),
       drawer: Drawer(
         backgroundColor: Color.fromRGBO(219, 212, 211, 1),
-        child: MenuEsquerre(),
+        child: MenuEsquerre(
+          controladorPresentacio: _controladorPresentacio,
+        ),
       ),
     );
   }
