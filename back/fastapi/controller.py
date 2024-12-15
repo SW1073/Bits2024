@@ -57,4 +57,8 @@ class Controller:
 
 
     def get_prediction(self, class_id):
-        return FormModel(self.model_predict(class_id)[0])
+        ret = self.model_predict(class_id)
+        result = []
+        for r in ret:
+            result.append(FormModel(r))
+        return result
