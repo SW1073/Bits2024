@@ -18,14 +18,13 @@ class _AfegirSimptomes extends State<AfegirSimptomes> {
     'Esternut',
     'Vomits',
     'Tos',
-    'Bé',
-    'Regular',
-    'Malament'
+    'Altres'
   ];
 
   late List<String> simptomes = [];
 
   String? _selectedOption;
+  late String _selectedRadio = "Bé";
 
   void eliminarSimptoma(index) {
     setState(() {
@@ -35,7 +34,14 @@ class _AfegirSimptomes extends State<AfegirSimptomes> {
 
   void enviarFormulari() {
     //cridar a funció per enviar formulari a backend
-    print('enviar');
+    //data del dia d'avui
+    //agafa els simptomes
+    //agafa el valor de radio -> ficar dins de simptomes
+    setState(() {
+      simptomes = [];
+      _selectedRadio = "Bé";
+      _selectedOption = null;
+    });
   }
 
   @override
@@ -103,7 +109,7 @@ class _AfegirSimptomes extends State<AfegirSimptomes> {
             height: 20,
           ),
           SizedBox(
-            height: 480,
+            height: 420,
             child: Expanded(
               child: simptomes.isNotEmpty
                   ? simptomesRegistrats()
@@ -114,7 +120,57 @@ class _AfegirSimptomes extends State<AfegirSimptomes> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 10,
+          ),
+          Row(
+            children: [
+              Text(
+                'Estat : ',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Expanded(
+                child: RadioListTile<String>(
+                  value: "Bé",
+                  groupValue: _selectedRadio,
+                  title: const Text("Bé"),
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedRadio = value!;
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: RadioListTile<String>(
+                  value: "Regular",
+                  groupValue: _selectedRadio,
+                  title: const Text("Regular"),
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedRadio = value!;
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                child: RadioListTile<String>(
+                  value: "Malament",
+                  groupValue: _selectedRadio,
+                  title: const Text("Malament"),
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedRadio = value!;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
           ),
           Container(
             padding: EdgeInsets.all(8),

@@ -72,7 +72,7 @@ class _Aula extends State<Aula> {
                     width: 30,
                   ),
                   Text(
-                    'Aula',
+                    'Aula: nombre aula',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -98,19 +98,19 @@ class _Aula extends State<Aula> {
   }
 
   Widget MenuInferior() {
-    return Container(
+    return SizedBox(
       child: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.auto_graph),
             label: 'Gràfics',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Add',
+            icon: Icon(Icons.mode_edit),
+            label: 'Formulari',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.mode_comment_rounded),
             label: 'Fórum',
           ),
         ],

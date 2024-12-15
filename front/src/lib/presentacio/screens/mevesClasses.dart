@@ -34,14 +34,28 @@ class _MevesClasses extends State<MevesClasses> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 20),
-          child: const Text(
-            'Nom App',
-            style: TextStyle(
-              color: Color.fromRGBO(8, 72, 135, 1),
-              fontWeight: FontWeight.bold,
-              fontSize: 35,
-            ),
+          padding: EdgeInsets.only(top: 100, bottom: 100),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                '../assets/logo.png',
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              const Text(
+                'Xarxair',
+                style: TextStyle(
+                  color: Color.fromRGBO(8, 72, 135, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                ),
+              ),
+            ],
           ),
         ),
         leading: Builder(
