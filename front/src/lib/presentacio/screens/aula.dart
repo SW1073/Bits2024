@@ -115,6 +115,9 @@ class _Aula extends State<Aula> {
           ),
         ],
         currentIndex: index_marcat,
+        iconSize: 40,
+        selectedFontSize: 18, // Increases font size for the selected item
+        unselectedFontSize: 16,
         backgroundColor: Color.fromRGBO(73, 160, 120, 1),
         selectedItemColor: Colors.white,
         onTap: _onItemTapped,
