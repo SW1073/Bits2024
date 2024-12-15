@@ -91,7 +91,7 @@ class _AfegirAules extends State<AfegirAules> {
                     Row(
                       children: [
                         Text(
-                          'Nom nen/a: ',
+                          'Nom nen/a:  ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -135,7 +135,7 @@ class _AfegirAules extends State<AfegirAules> {
                     Row(
                       children: [
                         Text(
-                          'Província: ',
+                          'Província:      ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -157,14 +157,14 @@ class _AfegirAules extends State<AfegirAules> {
                     Row(
                       children: [
                         Text(
-                          'Nivell: ',
+                          'Nivell:   ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: MediaQuery.of(context).size.width * 0.7,
                           padding:
                               EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                           child: TextField(
@@ -179,7 +179,7 @@ class _AfegirAules extends State<AfegirAules> {
                     Row(
                       children: [
                         Text(
-                          'Linea: ',
+                          'Linea:   ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
