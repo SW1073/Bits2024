@@ -80,18 +80,12 @@ class _AfegirAules extends State<AfegirAules> {
                 ),
               ),
             ),
-            /*Expanded(
+            Expanded(
               child: Container(
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: Text('Provincia: '),
-                      title: ,
-                    )
-                  ],
-                ),
+                height: 400,
+                color: Color.fromRGBO(219, 212, 211, 1),
               ),
-            ),*/
+            ),
             Container(
               padding: EdgeInsets.all(8),
               alignment: Alignment.bottomRight,
