@@ -84,6 +84,122 @@ class _AfegirAules extends State<AfegirAules> {
               child: Container(
                 height: 400,
                 color: Color.fromRGBO(219, 212, 211, 1),
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Nom nen/a: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Escriu...',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Nom escola: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Escriu...',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Província: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Escriu...',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Nivell: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Escriu...',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Linea: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Escriu...',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
